@@ -1,6 +1,7 @@
 params.str = 'Hello world!'
 
 process splitLetters {
+    container 'alpine'
     output:
     path 'chunk_*'
 
@@ -10,6 +11,7 @@ process splitLetters {
 }
 
 process convertToUpper {
+    container 'alpine'
     input:
     path x
 
