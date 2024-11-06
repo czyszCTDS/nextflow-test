@@ -1,28 +1,17 @@
 params.str = 'Hello world!'
 
-process splitLetters {
+process echo {
     container 'alpine'
-    output:
-    path 'chunk_*'
-
-    """
-    printf '${params.str}' | split -b 6 - chunk_
-    """
-}
-
-process convertToUpper {
-    container 'alpine'
-    input:
-    path x
-
+    
     output:
     stdout
 
     """
-    cat $x | tr '[a-z]' '[A-Z]'
+    echo '${params.str}
     """
+
 }
 
 workflow {
-    splitLetters | flatten | convertToUpper | view { v -> v.trim() }
+    echo
 }
