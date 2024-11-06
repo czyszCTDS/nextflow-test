@@ -1,5 +1,5 @@
 process sayHello {
-    container 'alpine'
+    container 'ubuntu'
 
     output:
         stdout
