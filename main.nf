@@ -1,17 +1,17 @@
-params.str = 'Hello world!'
-
-process echo {
+process sayHello {
     container 'alpine'
-    
+
     output:
-    stdout
+        stdout
 
+    script:
     """
-    echo '${params.str}
+    echo 'Hello World!'
     """
-
 }
 
 workflow {
-    echo
+
+    // emit a greeting
+    sayHello()
 }
